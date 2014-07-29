@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Core.DTOs;
 using Core.Services;
 
 namespace AzureLoggingApi.Controllers
 {
-    public class LoggingController : ApiController, IDisposable
+    public class LoggingController : ApiController
     {
       private readonly ILoggingService _loggingService;
       private bool disposed =false;
-
-      public LoggingController() : this(new LoggingService())
-      {
-        
-      }
 
       public LoggingController(ILoggingService loggingService)
       {
@@ -34,23 +30,5 @@ namespace AzureLoggingApi.Controllers
           });
         }
 
-        new protected void Dispose()
-        {
-          this.Dispose(true);
-          GC.SuppressFinalize(this);
-        }
-
-        new protected virtual void Dispose(bool disposing)
-        {
-          if (!this.disposed)
-          {
-            if (disposing)
-            {
-              this._loggingService.Dispose();
-            }
-          }
-
-          this.disposed = true;
-        }
     }
 }
