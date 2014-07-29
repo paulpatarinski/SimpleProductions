@@ -20,9 +20,9 @@ namespace AzureLoggingApi.Controllers
         _loggingService = loggingService;
       }
 
-      public string Get()
+      public IEnumerable<CustomException> Get()
       {
-        return "Welcome to the Logging Controller";
+        return _loggingService.GetExceptions();
       }
 
       // POST: api/Logging

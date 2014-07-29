@@ -1,15 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using MongoDB.Driver;
 
 namespace Core.Services
 {
   public class LoggingService : IDisposable, ILoggingService
   {
-    public LoggingService()
-    {
-      
-    }
-
     private string connectionString = System.Environment.GetEnvironmentVariable("CUSTOMCONNSTR_MONGOLAB_URI");
     private MongoServer mongoServer = null;
     private bool disposed = false;
@@ -18,11 +14,25 @@ namespace Core.Services
 
     public void LogError(CustomException exception)
     {
-      var collection = GetExceptionsCollectionForEdit();
+      var collection = GetExceptionsCollection();
       collection.Insert(exception);
     }
 
-    private MongoCollection<CustomException> GetExceptionsCollectionForEdit()
+
+    public IEnumerable<CustomException> GetExceptions()
+    {
+      try
+      {
+        var collection = GetExceptionsCollection();
+        return collection.FindAll();
+      }
+      catch (MongoConnectionException)
+      {
+        return new List<CustomException>();
+      }
+    }
+
+    private MongoCollection<CustomException> GetExceptionsCollection()
     {
       var url = new MongoUrl(connectionString);
 
