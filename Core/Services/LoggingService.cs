@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.DTOs;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 
 namespace Core.Services
 {
@@ -27,6 +28,22 @@ namespace Core.Services
     {
       var collection = GetExceptionsCollection();
       collection.Insert(exception);
+    }
+
+    public IEnumerable<CustomException> GetExceptionsByMethodName(string methodName)
+    {
+      var collection = GetExceptionsCollection();
+      var query = Query<CustomException>.EQ(e => e.MethodName, methodName);
+      var entity = collection.Find(query);
+
+      return entity;
+    }
+
+    public void DeleteByMethodName(string methodName)
+    {
+      var collection = GetExceptionsCollection();
+      var query = Query<CustomException>.EQ(e => e.MethodName, methodName);
+      collection.Remove(query);
     }
 
     public IEnumerable<CustomException> GetExceptions()
