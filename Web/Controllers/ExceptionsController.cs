@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using Core.DTOs;
 using Core.Services;
@@ -20,9 +23,11 @@ namespace AzureLoggingApi.Controllers
     }
 
     //POST: api/Logging
-    public void Post([FromBody] CustomException customException)
+    public HttpResponseMessage Post([FromBody] CustomException customException)
     {
       _loggingService.LogError(customException);
+
+      return Request.CreateResponse(HttpStatusCode.OK);
     }
 
   }
