@@ -20,7 +20,6 @@ namespace Core.Services
     private readonly string _connectionString; 
 
     private MongoServer mongoServer = null;
-    private bool disposed = false;
     private string dbName = "MongoLab-97";
     private string collectionName = "Exceptions";
    

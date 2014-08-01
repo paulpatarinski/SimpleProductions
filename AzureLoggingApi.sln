@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureLoggingApi", "AzureLoggingApi\AzureLoggingApi.csproj", "{8C0FE13A-FAAB-4938-A91C-03EFAFBF0034}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{7DE7C82C-5658-4DFC-9527-F843679C93D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E1D0183B-AF3D-4EC2-8791-28E248420CFE}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{D62D276B-6A54-45C4-8370-81B2448F9822}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +20,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8C0FE13A-FAAB-4938-A91C-03EFAFBF0034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C0FE13A-FAAB-4938-A91C-03EFAFBF0034}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C0FE13A-FAAB-4938-A91C-03EFAFBF0034}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C0FE13A-FAAB-4938-A91C-03EFAFBF0034}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DE7C82C-5658-4DFC-9527-F843679C93D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7DE7C82C-5658-4DFC-9527-F843679C93D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DE7C82C-5658-4DFC-9527-F843679C93D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DE7C82C-5658-4DFC-9527-F843679C93D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D62D276B-6A54-45C4-8370-81B2448F9822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D62D276B-6A54-45C4-8370-81B2448F9822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D62D276B-6A54-45C4-8370-81B2448F9822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D62D276B-6A54-45C4-8370-81B2448F9822}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

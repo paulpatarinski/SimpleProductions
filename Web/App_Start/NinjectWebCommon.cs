@@ -1,10 +1,10 @@
 using System.Web.Http;
 using Core.Services;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AzureLoggingApi.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AzureLoggingApi.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Web.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Web.App_Start.NinjectWebCommon), "Stop")]
 
-namespace AzureLoggingApi.App_Start
+namespace Web.App_Start
 {
     using System;
     using System.Web;
@@ -39,27 +39,30 @@ namespace AzureLoggingApi.App_Start
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
+        /// <summary>
+        /// Creates the kernel that will manage your application.
+        /// </summary>
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
-            try
-            {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-                kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+          var kernel = new StandardKernel();
+          try
+          {
+            kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+            kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                RegisterServices(kernel);
+            RegisterServices(kernel);
 
-                // Install our Ninject-based IDependencyResolver into the Web API config
-                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            // Install our Ninject-based IDependencyResolver into the Web API config
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
-                return kernel;
-            }
-            catch
-            {
-                kernel.Dispose();
-                throw;
-            }
+            return kernel;
+          }
+          catch
+          {
+            kernel.Dispose();
+            throw;
+          }
         }
 
         /// <summary>
