@@ -3,11 +3,13 @@
 
       $('#table_id').DataTable({
         data: data,
+        order : [[ 2, "desc" ]],
         columns: [
-            { data: 'MethodName', width:'10%'},
-            { data: 'Message' , width :'80%'},
-            { data: 'ExceptionDate', width: '80%' },
-        ]
+            { data: 'MethodName'},
+            { data: 'Message' , width :'90%'},
+            { data: 'ExceptionDate'},
+            { data: 'AppVersion'},
+        ],
       });
     });
   });

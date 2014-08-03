@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
+using AutoMapper;
 using Core.DTOs;
 using Core.Services;
+using Web.Models;
 
 namespace AzureLoggingApi.Controllers
 {
@@ -17,9 +19,9 @@ namespace AzureLoggingApi.Controllers
       _loggingService = loggingService;
     }
 
-    public IEnumerable<CustomException> Get()
+    public IEnumerable<ExceptionModel> Get()
     {
-      return _loggingService.GetExceptions();
+      return _loggingService.GetExceptions().Select(Mapper.Map<CustomException, ExceptionModel>);
     }
 
     //POST: api/Logging
